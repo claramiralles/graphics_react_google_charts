@@ -11,14 +11,14 @@ function App() {
   chartType="PieChart"
   loader={<div>Loading Chart</div>} 
   data={[
-    ['Pizza', 'Popularity'],
+    ['Tone', 'Percentage'],
     ['Genial', 76],
     ['Meh', 7],
     ['Mal', 17],
   ]}
   options={{
-    title: 'Popularity of Types of Pizza',
-    sliceVisibilityThreshold: 0.2, // 20%
+    title: 'Humor de las llamadas',
+    sliceVisibilityThreshold: 0.01, // 1%
   }}
   rootProps={{ 'data-testid': '7' }}
 />
