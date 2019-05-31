@@ -12,11 +12,9 @@ function App() {
   loader={<div>Loading Chart</div>} 
   data={[
     ['Pizza', 'Popularity'],
-    ['Pepperoni', 33],
-    ['Hawaiian', 26],
-    ['Mushroom', 22],
-    ['Sausage', 10], // Below limit.
-    ['Anchovies', 9], // Below limit.
+    ['Genial', 76],
+    ['Meh', 7],
+    ['Mal', 17],
   ]}
   options={{
     title: 'Popularity of Types of Pizza',
