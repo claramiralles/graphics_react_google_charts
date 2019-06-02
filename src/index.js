@@ -6,7 +6,7 @@ import PruebaBars from './components/PruebaBars';
 
 ReactDOM.render(
 	<div>
-		<Prueba />
+		{/* <Prueba /> */}
 		<PruebaBars />
 	</div>,
 	document.getElementById('root')
