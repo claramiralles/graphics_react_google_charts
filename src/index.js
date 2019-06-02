@@ -1,6 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Prueba from './Prueba'
+import Prueba from './Prueba';
+import PruebaBars from './components/PruebaBars';
 
-ReactDOM.render(<Prueba />, document.getElementById('root'));
+ReactDOM.render(
+	<div>
+		<Prueba />
+		<PruebaBars />
+	</div>,
+	document.getElementById('root')
+);
