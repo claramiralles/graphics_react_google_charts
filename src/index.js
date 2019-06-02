@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Prueba from './Prueba';
+import Prueba from './components/PruebaPie';
 import PruebaBars from './components/PruebaBars';
 
 ReactDOM.render(
