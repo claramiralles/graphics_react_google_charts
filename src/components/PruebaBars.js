@@ -61,10 +61,10 @@ class PruebaBars extends React.Component {
 			dataLoadingStatusBars: 'ready',
 			chartDataBars: [
 				['Months', 'ikea', 'racc', 'cc', 'audi', 'tork'],
-				['month 0', 1, 5, 3, 3, 1],
-				['month 1', 2, 15, 6, 3, 2],
-				['month 2', 2, 8, 9, 2, 3],
-				['month 3', 2, 4, 3, 1, 2]
+				['Enero', 1, 5, 3, 3, 1],
+				['Febrero', 2, 15, 6, 3, 2],
+				['Marzo', 2, 8, 9, 2, 3],
+				['Abril', 2, 4, 3, 1, 2]
 			]
 		});
 	}
