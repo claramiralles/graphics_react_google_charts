@@ -40,75 +40,74 @@ const data = [
 	}
 ];
 
+const dataReduced = {
+	month: 1,
+	year: 2018,
+	ikea: 2,
+	racc: 15,
+	cc: 6,
+	audi: 3,
+	tork: 2
+};
+
+const monthsYear = [
+	'Enero',
+	'Febrero',
+	'Marzo',
+	'Abril',
+	'Mayo',
+	'Junio',
+	'Julio',
+	'Agosto',
+	'Septiembre',
+	'Noviembre',
+	'Diciembre'
+];
+
 class PruebaBars extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			dataLoadingStatusBars: 'loading',
+
+			dataBarsTransformed: [],
 			chartDataBars: []
 		};
 	}
 
 	componentDidMount() {
-		//First item on array is an array of topic in direction x->, followed by companies names (the data to be stacked)
-		// console.log(Object.values(data));
-		// console.log(data);
-		// console.log(Object.keys(data));
-
-		const chartDataBars = [['Months', 'ikea', 'racc', 'cc', 'audi', 'tork']];
-
+		//Gonna create a new key with the Month as a word
 		this.setState({
-			dataLoadingStatusBars: 'ready',
-			chartDataBars: [
-				['Meses', 'ikea', 'racc', 'cc', 'audi', 'tork'],
-				['Enero', 1, 5, 3, 3, 1],
-				['Febrero', 2, 15, 6, 3, 2],
-				['Marzo', 2, 8, 9, 2, 3],
-				['Abril', 2, 4, 3, 1, 2]
-			]
+			dataBarsTransformed: data.map((item, index) => {
+				return {
+					...item,
+					month: monthsYear[index]
+				};
+			})
 		});
 	}
 
-	// 	const chartDataBarsNames = ['Genial', 'Meh', 'Mal'];
-	// 	const chartDataBarsValues = Object.values(data);
+	componentDidUpdate() {
+		console.log(this.state);
+		const oneMonthReduced = this.state.dataBarsTransformed[0];
+		console.log(oneMonthReduced);
 
-	// 	for (let i = 0; i < chartDataBarsNames.length; i += 1) {
-	// 		chartDataBars.push([chartDataBarsNames[i], chartDataBarsValues[i]]);
-	// 	}
-	// 	this.setState({
-	// 		dataLoadingStatusBars: 'ready',
-	// 		chartDataBars: chartDataBars
-	// 	});
-	// });
+		console.log(Object.values(oneMonthReduced));
 
-	// componentDidMount() {
-	// 	fetch('http://private-01a241-adalabapi.apiary-mock.com/bar')
-	// 		.then(response => response.json())
-	// 		.then(data => {
-	// 			console.log(data);
-	// 			//For a basic bar chart we need the data like the following:
-	// 			// data={[
-	// 			//   ['City', '2010 Population', '2000 Population'],
-	// 			//   ['New York City, NY', 8175000, 8008000],
-	// 			//   ['Los Angeles, CA', 3792000, 3694000],
-	// 			//   ['Chicago, IL', 2695000, 2896000],
-	// 			//   ['Houston, TX', 2099000, 1953000],
-	// 			//   ['Philadelphia, PA', 1526000, 1517000],
-	// 			// ]}
-	// 			const chartDataBars = [['Call mood', 'Quantity']];
-	// 			//First item of this array is another array with the titles for topic and measurement
-	// 			const chartDataBarsNames = ['Genial', 'Meh', 'Mal'];
-	// 			const chartDataBarsValues = Object.values(data);
+		//Removing first two items
+		//PROBLEM HERE!!!
+		const dataToKeep = Object.values(oneMonthReduced).splice(1, 2);
+		console.log(dataToKeep);
 
-	// 			for (let i = 0; i < chartDataBarsNames.length; i += 1) {
-	// 				chartDataBars.push([chartDataBarsNames[i], chartDataBarsValues[i]]);
-	// 			}
-	// 			this.setState({
-	// 				dataLoadingStatusBars: 'ready',
-	// 				chartDataBars: chartDataBars
-	// 			});
-	// 		});
-	// }
+		// console.log(Object.keys(oneMonthReduced));
+
+		//Here all items following 'Months' should be from the filter fetch. Let's start with them manually
+		const chartDataBars = [['Months', 'ikea', 'racc', 'cc', 'audi', 'tork']];
+
+		chartDataBars.push(dataToKeep);
+		console.log(chartDataBars);
+	}
+
 	render() {
 		//Conditional rendering
 		return this.state.dataLoadingStatusBars === 'ready' ? (
@@ -175,5 +174,4 @@ class PruebaBars extends React.Component {
 		);
 	}
 }
-
 export default PruebaBars;
