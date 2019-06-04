@@ -87,11 +87,15 @@ class PruebaBars extends React.Component {
 		const arraySinFecha = allDataToKeep.filter(item => item !== dataToKeep[0])
 		console.log(dataToKeep);
 		console.log(arraySinFecha);
-		console.log(Object.keys(oneMonthReduced));
+
+		const someKeys = Object.keys(oneMonthReduced).splice(2);
+		console.log(someKeys);
 
 		//Here all items following 'Months' should be from the filter fetch. Let's start with them manually
-		const chartDataBars = [['Months', 'ikea', 'racc', 'cc', 'audi', 'tork']];
-
+		const chartTitle = ['Meses'];
+		const concatenate = chartTitle.concat(someKeys);
+		console.log(concatenate)
+		const chartDataBars = [];
 		chartDataBars.push(arraySinFecha);
 		console.log(chartDataBars);
 	}
