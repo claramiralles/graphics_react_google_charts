@@ -92,19 +92,20 @@ class PruebaBars extends React.Component {
 		const oneMonthReduced = this.state.dataBarsTransformed[0];
 		console.log(oneMonthReduced);
 
-		console.log(Object.values(oneMonthReduced));
 
 		//Removing first two items
 		//PROBLEM HERE!!!
-		const dataToKeep = Object.values(oneMonthReduced).splice(1, 2);
+		const allDataToKeep = Object.values(oneMonthReduced);
+		const dataToKeep = Object.values(oneMonthReduced).splice(1, 1);//[2018]
+		const arraySinFecha = allDataToKeep.filter(item => item !== dataToKeep[0])
 		console.log(dataToKeep);
-
-		// console.log(Object.keys(oneMonthReduced));
+		console.log(arraySinFecha);
+		console.log(Object.keys(oneMonthReduced));
 
 		//Here all items following 'Months' should be from the filter fetch. Let's start with them manually
 		const chartDataBars = [['Months', 'ikea', 'racc', 'cc', 'audi', 'tork']];
 
-		chartDataBars.push(dataToKeep);
+		chartDataBars.push(arraySinFecha);
 		console.log(chartDataBars);
 	}
 
