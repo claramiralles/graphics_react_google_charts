@@ -68,7 +68,7 @@ class PruebaBars extends React.Component {
 	componentDidMount() {
 		//Gonna create a new key with the Month as a word
 		this.setState({
-			dataBarsTransformed: data.map((item,index) => {
+			dataBarsTransformed: data.map((item, index) => {
 				return {
 					...item,
 					month: monthsYear[data[index].month]
@@ -78,26 +78,24 @@ class PruebaBars extends React.Component {
 	}
 
 	componentDidUpdate() {
-		// console.log(this.state);
 		const oneMonthReduced = this.state.dataBarsTransformed[0];
-		// console.log(oneMonthReduced);
-
 		const allDataToKeep = Object.values(oneMonthReduced);
-		const dataToKeep = Object.values(oneMonthReduced).splice(1, 1);//[2018]
-		const arraySinFecha = allDataToKeep.filter(item => item !== dataToKeep[0])
-		// console.log(dataToKeep);
-		// console.log(arraySinFecha);
+		const dataToDelete = Object.values(oneMonthReduced).splice(1, 1); //[2018]
+		const arrayWithoutYear = allDataToKeep.filter(
+			item => item !== dataToDelete[0]
+		);
+		console.log(arrayWithoutYear);
 
 		const someKeys = Object.keys(oneMonthReduced).splice(2);
-		// console.log(someKeys);
-
 		//Here all items following 'Months' should be from the filter fetch. Let's start with them manually
 		const chartTitle = ['Meses'];
 		const concatenate = chartTitle.concat(someKeys);
-		// console.log(concatenate)
+		console.log(concatenate);
+
 		const chartDataBars = [];
-		chartDataBars.push(arraySinFecha);
-		// console.log(chartDataBars);
+		chartDataBars.push(concatenate);
+		chartDataBars.push(arrayWithoutYear);
+		console.log(chartDataBars);
 	}
 
 	render() {
