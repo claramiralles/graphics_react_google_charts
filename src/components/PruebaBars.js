@@ -3,7 +3,7 @@ import Chart from 'react-google-charts';
 
 const data = [
 	{
-		month: 0,
+		month: 2,
 		year: 2018,
 		ikea: 1,
 		racc: 5,
@@ -40,16 +40,6 @@ const data = [
 	}
 ];
 
-const dataReduced = {
-	month: 1,
-	year: 2018,
-	ikea: 2,
-	racc: 15,
-	cc: 6,
-	audi: 3,
-	tork: 2
-};
-
 const monthsYear = [
 	'Enero',
 	'Febrero',
@@ -78,10 +68,10 @@ class PruebaBars extends React.Component {
 	componentDidMount() {
 		//Gonna create a new key with the Month as a word
 		this.setState({
-			dataBarsTransformed: data.map((item, index) => {
+			dataBarsTransformed: data.map((item,index) => {
 				return {
 					...item,
-					month: monthsYear[index]
+					month: monthsYear[data[index].month]
 				};
 			})
 		});
@@ -92,9 +82,6 @@ class PruebaBars extends React.Component {
 		const oneMonthReduced = this.state.dataBarsTransformed[0];
 		console.log(oneMonthReduced);
 
-
-		//Removing first two items
-		//PROBLEM HERE!!!
 		const allDataToKeep = Object.values(oneMonthReduced);
 		const dataToKeep = Object.values(oneMonthReduced).splice(1, 1);//[2018]
 		const arraySinFecha = allDataToKeep.filter(item => item !== dataToKeep[0])
